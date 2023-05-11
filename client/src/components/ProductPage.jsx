@@ -9,7 +9,7 @@ const ProductPage = (props) => {
     const {id} = useParams();
 
     useEffect(()=>{
-        axios.get(`http://localhost:8000/api/product/${id}`)
+        axios.get('http://localhost:8000/api/product/'+id)
             .then (res => {
                 console.log(res.data);
                 setProduct(res.data);
