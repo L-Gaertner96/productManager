@@ -25,7 +25,7 @@ const ProductForm = () => {
         <div className="container">
             <form onSubmit={onSubmitHandler}>
                 <div className="form-group col-6" >
-                    <label htmlFor="productName">Name:</label>
+                    <label htmlFor="productName">Name: </label>
                     <input type="text" className="form-control" onChange={(e)=>setProductName(e.target.value)} />
                 </div>
                 <div className="form-group col-6">
