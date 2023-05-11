@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const ProductList = (props) => {
   const { product, setProduct } = props;
@@ -27,6 +28,7 @@ const ProductList = (props) => {
                 <h3>{product.productName}</h3>
                 <p>{product.productDescription}</p>
                 <p>Price: ${product.productPrice}</p>
+                <Link to={`/product/${product._id}`}>View Details On {product.productName} Here</Link>
               </li>
             );
           })}
