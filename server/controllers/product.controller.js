@@ -15,7 +15,7 @@ module.exports.createProduct = (req, res) => {
 }
 
 module.exports.getAllProducts = (req, res) => {
-    Product.find()
+    Product.find({})
         .then(products => {
             res.json(products);
         })
