@@ -38,8 +38,8 @@ const ProductPage = () => {
           <h5 className="card-title">{product.productName}</h5>
           <h6 className="card-subtitle mb-2 text-muted">Price: ${product.productPrice}</h6>
           <p className="card-text">{product.productDescription}</p>
-          <Link to={`/product/edit/${product._id}`}>Edit</Link>
-          <Link to="#" onClick={deleteProduct}>Delete</Link>
+          <Link to={`/product/edit/${product._id}`}>Edit </Link>|
+          <Link to="#" onClick={deleteProduct}> Delete</Link>
         </div>
       </div>
     </div>

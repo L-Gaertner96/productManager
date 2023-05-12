@@ -24,7 +24,7 @@ const UpdateProduct = (props) => {
 
     const updateHandler = (e) => {
         e.preventDefault();
-        axios.patch('http://localhost:8000/api/product'+id, {productName, productPrice, productDescription})
+        axios.patch('http://localhost:8000/api/product/'+id, {productName, productPrice, productDescription})
             .then(res=>{
                 console.log(res);
                 navigate('/home');
