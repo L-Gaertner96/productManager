@@ -9,4 +9,4 @@ app.use(express.urlencoded({ extended: true }));
 require('./config/mongoose.config')
 require('./routes/product.route')(app);
     
-app.listen(port, () => console.log(`Listening on port: ${port}`) );
+app.listen(port, () => console.log(`Server running on ${port}`) );

@@ -1,35 +1,49 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 
+const ProductPage = () => {
+  const [product, setProduct] = useState({});
+  const { id } = useParams();
+  const navigate=useNavigate();
 
-const ProductPage = (props) => {
+  const deleteProduct = () => {
+    axios
+      .delete(`http://localhost:8000/api/product/${id}`)
+      .then((res) => {
+        console.log(res.data);
+        navigate('/home')
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
 
-    const [product, setProduct] = useState({});
-    const {id} = useParams();
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8000/api/product/${id}`)
+      .then((res) => {
+        console.log(res.data);
+        setProduct(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, [id]);
 
-    useEffect(()=>{
-        axios.get('http://localhost:8000/api/product/'+id)
-            .then (res => {
-                console.log(res.data);
-                setProduct(res.data);
-            })
-            .catch( err => {console.error(err);
-            });
-    }, [id]);
-
-
-    return (
-        <div className = "container text-center">
-            <div className="card col-4 offset-3 mt-3">
-                <div className="card-body">
-                    <h5 className="card-title">{product.productName}</h5>
-                    <h6 className="card-subtitle mb-2 text-muted">Price: ${product.productPrice}</h6>
-                    <p className="card-text">{product.productDescription}</p>
-                </div>
-            </div>
+  return (
+    <div className="container text-center">
+      <div className="card col-4 offset-3 mt-3">
+        <div className="card-body">
+          <h5 className="card-title">{product.productName}</h5>
+          <h6 className="card-subtitle mb-2 text-muted">Price: ${product.productPrice}</h6>
+          <p className="card-text">{product.productDescription}</p>
+          <Link to={`/product/edit/${product._id}`}>Edit</Link>
+          <button onClick={deleteProduct}>Delete</button>
         </div>
-    )
-}
+      </div>
+    </div>
+  );
+};
 
-export default ProductPage
+export default ProductPage;
