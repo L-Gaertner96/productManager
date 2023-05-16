@@ -8,7 +8,7 @@ const Main = (props) => {
     const [product, setProduct] = useState([]);
 
     const removeFromDom = productId => {
-        setProduct(product.filter(product=>product._id!=productId))
+        setProduct(product.filter(product=>product._id!==productId))
     }
 
     return(
